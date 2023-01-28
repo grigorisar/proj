@@ -2,6 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import special
 
+def array_to_str(s):
+   return ''.join([str(elem) for elem in s])
 def gray_code(m): 
     if m==1:
         g = ['0','1']
@@ -20,6 +22,9 @@ def str_to_bitsarray(a):
     m.append(int(bin(i)[2:]))
   return m
 
+def Qfunction(x):
+    return 0.5 * special.erfc(x/np.sqrt (2.0))
+    
 class Constellation:
     def __init__(self, title = None): 
         self.map = {}
@@ -92,9 +97,6 @@ class Constellation:
 
 
 
-def Qfunction(x):
-    return 0.5 * special.erfc(x/np.sqrt (2.0))
-    
 class pam_constellation(Constellation):
     def __init__(self, M, beta = 1, title = None, SNRbdB = None):
         super().__init__(title = title)
